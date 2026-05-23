@@ -1,0 +1,24 @@
+[project]
+name = "music-dl"
+version = "0.1.0"
+description = "Download music from a URL into an Artist/Album/Track library for Navidrome"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Marvin Schwarz" }]
+dependencies = ["yt-dlp"]
+
+[project.optional-dependencies]
+spotify = ["spotdl"]
+tidal = ["streamrip"]
+all = ["spotdl", "streamrip"]
+
+[project.scripts]
+music-dl = "music_dl:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["music_dl"]
