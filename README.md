@@ -52,6 +52,31 @@ export MUSIC_DL_DIR=/path/to/library   # used when -o is omitted
 I keep `MUSIC_DL_DIR` pointed at my Navidrome library so new tracks show up on
 the next scan.
 
+## Audio format (yt-dlp)
+
+By default the audio is saved exactly as the site serves it, usually Opus from
+YouTube, without re-encoding. YouTube has no lossless audio, so this is the best
+quality you can get, and converting it would only lose more. Pass `-f` to convert
+anyway, for players that need a specific format:
+
+```
+music-dl -f mp3 <url>    # also flac, m4a, opus
+```
+
+## Tags (yt-dlp)
+
+After a yt-dlp download the file is retagged (mp3, opus, ogg, flac, m4a) so
+Navidrome credits every artist separately:
+
+- `ARTISTS` holds one value per artist, taken from YouTube's own artist list
+  (YouTube Music uploads and videos with credited artists). Without that list
+  the artist from the "Artist - Title" video title or the uploader is used as is,
+  never split by guessing.
+- The album artist is always set to the first artist, and the folder is named
+  after it.
+- Bogus values are dropped: track number 63 from ffmpeg's ID3v1 tag and the
+  genre "Music" (YouTube's video category).
+
 ## License
 
 MIT

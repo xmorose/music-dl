@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "Marvin Schwarz" }]
-dependencies = ["yt-dlp"]
+dependencies = ["yt-dlp", "mutagen"]
 
 [project.optional-dependencies]
 spotify = ["spotdl"]
